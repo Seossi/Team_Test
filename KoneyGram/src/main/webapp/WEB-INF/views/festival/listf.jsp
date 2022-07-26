@@ -91,8 +91,6 @@
 						    </c:if> 
 						</ul>
 					</div>
-			
-					
 				</form>
 			</section>
 			<hr/>

@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="TourMapper">
+	
+	<resultMap id="CityVO" type="kr.co.vo.CityVO">
+		<id property="c_name" column="C_NAME"/>
+        <result property="c_ny" column = "C_NY"/>
+        <result property="c_nx" column = "C_NX"/>
+        <result property="c_pic" column = "C_PICS"/>
+	</resultMap>
+	
+    <resultMap id="TourVO" type="kr.co.vo.TourVO">
+        <id property="t_id" column="T_ID"/>
+        <result property="t_name" column = "T_NAME"/>
+        <result property="t_loadaddress" column = "T_LOADADDRESS"/>
+        <result property="t_gnumaddress" column = "T_GNUMADDRESS"/>
+        <result property="t_ny" column = "T_NY"/>
+        <result property="t_nx" column = "T_NX"/>
+        <result property="t_intro" column = "T_INTRO"/>
+        <result property="t_tel" column = "T_TEL"/>
+        <result property="t_photo" column = "T_PHOTO"/>
+        <result property="t_city" column = "T_CITY"/>
+    </resultMap>
+	
+	<sql id="tour">
+	select T_ID, T_NAME, T_LOADADDRESS, T_GNUMADDRESS, T_NY, T_NX, T_INTRO, T_TEL, T_PHOTO, T_CITY
+	from TOURS
+	</sql>
+	
+	<sql id="city">
+		SELECT SELECT C_NAME, C_NY, C_NX, C_PIC
+		FROM CITY
+	</sql>
+	
+	<select id="cityname" resultType="kr.co.vo.CityVO">
+		SELECT C_NAME, C_NY, C_NX, C_PIC
+		FROM CITY
+	</select>
+	
+	<select id="tourlist" resultType="kr.co.vo.TourVO">
+		<include refid="tour"/>
+       ORDER BY T_ID
+	</select>
+	
+	<select id="citytour" parameterType="kr.co.vo.TourVO">
+		<include refid="tour"/>
+		WHERE T_CITY = #{t_city}
+	</select>
+	
+	<select id="tourinfo" parameterType="string" resultType="kr.co.vo.TourVO">
+		<include refid="tour"/>
+		WHERE T_NAME = #{t_name}
+	</select>
+
+
+</mapper>

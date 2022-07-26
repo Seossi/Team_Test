@@ -106,10 +106,6 @@ commit;
 select * from tours;		--관광지
 alter table tours add constraint pk_t_id primary key (t_id);
 
-create table users(			-- 유저테이블(임시)
-    userID varchar2(50) primary key
-);
-
 create table arr_point(		-- 도착점 테이블
     arr_id varchar2(30) primary key,
     arr_loadaddress varchar2(500),
@@ -200,6 +196,34 @@ select tr_title as "계획제목", tr_date as "계획날짜", tr_content as "계
 arr_ny as "도착지경도", arr_nx as "도착지위도", t_ny as "관광지 경도", t_nx as "관광지 위도"
 from dp_point d, arr_point a, tours t, my_tourroute mt
 where d.dp_id = mt.dp_id and a.arr_id = mt.arr_id and t.t_id = mt.tr_id;
+
+create table my_route(
+    mr_id number primary key,
+    title varchar2(200) not null,
+    dp_name varchar2(100) not null,
+    dp_ny number(38,8) not null,
+    dp_nx number(38,8) not null,
+    
+    t1_name varchar2(100), 
+    t1_ny number(38,8), 
+    t1_nx number(38,8), 
+    
+    t2_name varchar2(100),
+    t2_ny number(38,8),
+    t2_nx number(38,8),
+    
+    t3_name varchar2(100),
+    t3_ny number(38,8),
+    t3_nx number(38,8),
+    
+    ep_name varchar2(100),
+    ep_ny number(38,8),
+    ep_nx number(38,8),
+    
+    contents varchar2(2400),
+    userId varchar2(50)
+);
+
 
 commit;
 
