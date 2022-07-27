@@ -37,18 +37,4 @@ body{
 	height: 100%;
 }
 
-.table{
-	white-space: pre-wrap;
-}
-
-table caption {
-  padding: .5em 0;
-}
-
-table.dataTable th,
-table.dataTable td {
-	white-space: nowrap;
-	cursor: default;
-	
-}
 

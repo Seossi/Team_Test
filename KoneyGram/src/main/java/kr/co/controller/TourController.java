@@ -1,22 +1,15 @@
 package kr.co.controller;
 
-import java.util.List;
-
-import javax.servlet.http.HttpServletRequest;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.servlet.ModelAndView;
 
 import kr.co.service.TourService;
-import kr.co.vo.CityVO;
-import kr.co.vo.TourVO;
+import kr.co.vo.MyrouteVO;
 
 @Controller
 @RequestMapping("/tours/*")
@@ -34,10 +27,18 @@ public class TourController {
 	  
 		
 		
-	    @RequestMapping(value = "/makesche",method = RequestMethod.GET)
-	    public String register (Model m) throws Exception {
-	        return "tours/makesche";
-	    }
+		@RequestMapping(value = "/makesche",method = RequestMethod.GET)
+		public String register (Model m) throws Exception {
+		    return "tours/makesche";
+		}
+		
+		
+		  @RequestMapping(value = "/makesche", method = RequestMethod.POST) 
+		  public String saveroute(MyrouteVO myroutevo) {
+			  
+		  
+			  return "redirect:";
+		  }
 		 
 		 
 	
