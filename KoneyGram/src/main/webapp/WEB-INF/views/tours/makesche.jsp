@@ -12,8 +12,7 @@
 <html>
 <head>
 <script	src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
-<link rel="stylesheet" href="/resources/css/style_auto2.css">
-<link rel="stylesheet" href="/resources/css/layout.css">
+<link rel="stylesheet" href="/resources/css/tourCSS/style_auto2.css">
  <script src="https://apis.openapi.sk.com/tmap/jsv2?version=1&appKey=l7xx0027c9071859472394ee1ff449ed1fdf"></script>
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
@@ -91,71 +90,57 @@
 			<div class = "left_items" style="width:100%;">
 				<h4>일정만들기</h4>
 				<div class ="make_sche">
-				
-					<input type="text" name="title" value="" placeholder="일정의 제목을 입력해주세요" >
-					<br>
-					<br>
-					<h5>출발지 입력하기</h5>
-					<input type = "text" id="dp_name" name="dp_name" value="" placeholder="출발지 입력을 위해 클릭해주세요" onclick="searchAddressd('S');">
-					<input type = "hidden" id="dp_ny" name="dp_ny" value="">
-					<input type = "hidden" id="dp_nx" name="dp_nx" value="">
-					<button id = "dpointcheck" onclick="geoLocation('S')">현재내위치 찍기</button>
-					<h5>관광지 입력하기</h5>
-						<input type = "text" id="t_name1" name = "tourname" value="" placeholder="관광지를 입력하세요">
-						<a href="tourlist.jsp?c_name=<%=cityname %>&tag=1" 
-							onclick="window.open(this.href, '_blank', 'width=650, height=600'); return false;">
-							관광리스트 보러가기
-						</a>
-						<input type = "hidden" id="t_ny1" name="t_ny" value="">
-						<input type = "hidden" id="t_nx1" name="t_nx" value="">
-					<h5>관광지 입력하기</h5>
-						<input type = "text" id="t_name2" name = "tourname" value="" placeholder="관광지를 입력하세요">
-						<a href="tourlist.jsp?c_name=<%=cityname %>&tag=2" 
-							onclick="window.open(this.href, '_blank', 'width=650, height=600'); return false;">
-							관광리스트 보러가기
-						</a>
-						<input type = "hidden" id="t_ny2" name="t_ny" value="">
-						<input type = "hidden" id="t_nx2" name="t_nx" value="">
-					<h5>관광지 입력하기</h5>
-						<input type = "text" id="t_name3" name = "tourname" value="" placeholder="관광지를 입력하세요">
-							<a href="tourlist.jsp?c_name=<%=cityname %>" 
-								onclick="window.open(this.href, '_blank', 'width=650, height=600'); return false;">
+				<form action = "/toursave" method="post">
+						<input type="text" name="title" value="" placeholder="일정의 제목을 입력해주세요" >
+						<br>
+						<br>
+						<h5>출발지 입력하기</h5>
+						<input type = "text" id="dp_name" name="dp_name" value="" placeholder="출발지 입력을 위해 클릭해주세요" onclick="searchAddressd('S');">
+						<input type = "hidden" id="dp_ny" name="dp_ny" value="">
+						<input type = "hidden" id="dp_nx" name="dp_nx" value="">
+						<!-- <button id = "dpointcheck" onclick="geoLocation('S')">현재내위치 찍기</button> -->
+						<h5>관광지 입력하기</h5>
+							<input type = "text" id="t_name1" name = "tourname" value="" placeholder="관광지를 입력하세요">
+							<a href="tourlist.jsp?c_name=<%=cityname %>&tag=1" 
+								onclick="window.open(this.href, '_blank', 'width=850, height=600'); return false;">
 								관광리스트 보러가기
 							</a>
-							<input type = "hidden" id="t_ny3" name="t_ny" value="">
-							<input type = "hidden" id="t_nx3" name="t_nx" value="">
-					<h5>관광지 입력하기</h5>
-						<input type = "text" id="t_name4" name = "tourname" value="" placeholder="관광지를 입력하세요">
-							<a href="tourlist.jsp?c_name=<%=cityname %>" 
-								onclick="window.open(this.href, '_blank', 'width=650, height=600'); return false;">
+							<input type = "hidden" id="t_ny1" name="t_ny1" value="">
+							<input type = "hidden" id="t_nx1" name="t_nx1" value="">
+						<h5>관광지 입력하기</h5>
+							<input type = "text" id="t_name2" name = "tourname" value="" placeholder="관광지를 입력하세요">
+							<a href="tourlist.jsp?c_name=<%=cityname %>&tag=2" 
+								onclick="window.open(this.href, '_blank', 'width=850, height=600'); return false;">
 								관광리스트 보러가기
 							</a>
-						<input type = "hidden" id="t_ny4" name="t_ny" value="">
-						<input type = "hidden" id="t_nx4" name="t_nx" value="">
-					<h5>관광지 입력하기</h5>
-						<input type = "text" id="t_name5" name = "tourname" value="" placeholder="관광지를 입력하세요">
-							<a href="tourlist.jsp?c_name=<%=cityname %>" 
-								onclick="window.open(this.href, '_blank', 'width=650, height=600'); return false;">
-								관광리스트 보러가기
-							</a>
-						<input type = "hidden" id="t_ny5" name="t_ny" value="">
-						<input type = "hidden" id="t_nx5" name="t_nx" value="">
-					<h5>도착지 입력하기</h5>
-					<input type = "text" id="ep_name" name="ep_name" value="" placeholder="도착지를 입력을 위해 클릭해주세요" onclick="searchAddresse('E');">
-					<input type = "hidden" id="ep_ny" name="ep_ny" value="">
-					<input type = "hidden" id="ep_nx" name="ep_nx" value="">
-					<br>
-					<br>
-					<br>
-					<br>
-					<textarea name="memo" placeholder="메모를 입력해주세요"></textarea>
-					<button onclick="route();">마커정보 보기</button>
+							<input type = "hidden" id="t_ny2" name="t_ny2" value="">
+							<input type = "hidden" id="t_nx2" name="t_nx2" value="">
+						<h5>관광지 입력하기</h5>
+							<input type = "text" id="t_name3" name = "tourname" value="" placeholder="관광지를 입력하세요">
+								<a href="tourlist.jsp?c_name=<%=cityname %>&tag=3" 
+									onclick="window.open(this.href, '_blank', 'width=850, height=600'); return false;">
+									관광리스트 보러가기
+								</a>
+								<input type = "hidden" id="t_ny3" name="t_ny3" value="">
+								<input type = "hidden" id="t_nx3" name="t_nx3" value="">
+						<h5>도착지 입력하기</h5>
+						<input type = "text" id="ep_name" name="ep_name" value="" placeholder="도착지를 입력을 위해 클릭해주세요" onclick="searchAddresse('E');">
+						<input type = "hidden" id="ep_ny" name="ep_ny" value="">
+						<input type = "hidden" id="ep_nx" name="ep_nx" value="">
+						<br>
+						<br>
+						<br>
+						<br>
+						<textarea name="memo" placeholder="메모를 입력해주세요" style="width:100%; height: 100px"></textarea>
+						
+						<button type = "submit"> 저장하기</button>
+						</form>
+					</div>
+				<button onclick="route();">경로확인하기</button>
 					<button onclick="removeMarker();"> 마커 지우기</button>
-					
-				</div>
+					<button onclick="addpass();">관광지마커 저장하기</button>
 			</div>
 			<div class = "map">
-				<%-- <jsp:include page="tour3.jsp" flush="false"></jsp:include> --%>
 				<div id = "map_div"></div>
 			</div>
 		</div>
@@ -261,7 +246,7 @@
 		}
 		
 		/*나의 위치찍기(시작)*/
-		function geoLocation(location) {
+		/* function geoLocation(location) {
 		    navigator.geolocation.getCurrentPosition(function(position){
 		        // 마커가 표시될 위치를 geolocation으로 얻어온 좌표로 생성합니다
 		        lat = position.coords.latitude; // 위도
@@ -286,7 +271,7 @@
 		        	en_y = lat;
 		        }
 		    });
-		};
+		}; */
 		/*나의 위치찍기(끝)*/
 		
 		/*주소 팝업창에서 마크찍기(시작)*/
@@ -327,12 +312,6 @@
 			
 			console.log(tourlist);
 			
-			for(var i=0; i<tourlist.length; i++){
-	            if(i>0){
-	                passList +="_";
-	            }
-	            passList += tourlist[i]
-	        };
 		};
 		/*관광지 마커 찍기 끝*/
 		
@@ -340,7 +319,7 @@
 		function TourMarker2(lon, lat){
 			console.log(lon);
 			console.log(lat);
-			addMarker_p('P', lon, lat, 3);
+			addMarker_p('P', lon, lat, 4);
 			map.setCenter(new Tmapv2.LatLng(lat,lon));
 			
 			var tour = lon+","+lat;
@@ -348,14 +327,18 @@
 			
 			console.log(tourlist);
 			
+		};
+		/*관광지 마커 찍기 끝*/
+		function addpass(){
 			for(var i=0; i<tourlist.length; i++){
 	            if(i>0){
 	                passList +="_";
 	            }
 	            passList += tourlist[i]
 	        };
-		};
-		/*관광지 마커 찍기 끝*/
+	        console.log(passList);
+	        alert("관광지를 저장완료했습니다.");
+		}
 		
 		
 		/*마커 찍기(시작)*/
@@ -480,12 +463,12 @@
 		/*주소 찾기 팝업창*/
 		/*시작점 주소찾기*/
 		function searchAddressd(status){
-			var pop1 = window.open("searchaddress_d.jsp","pop1","width=600,height=670, scrollbars=yes, resizable=yes");
+			var pop1 = window.open("searchaddress_d.jsp","pop1","width=800,height=670, scrollbars=yes, resizable=yes");
 			
 		}
 		/*도착점 주소찾기*/
 		function searchAddresse(status){
-			var pop2 = window.open("searchaddress_e.jsp","pop2","width=600,height=670, scrollbars=yes, resizable=yes");
+			var pop2 = window.open("searchaddress_e.jsp","pop2","width=800,height=670, scrollbars=yes, resizable=yes");
 
 			}
 		
@@ -525,15 +508,39 @@
 		}
 		
 		function removeMarker(){
-			if(markerList.length>0){
-				for(var i in markerList){
-					markerList[i].setMap(null);
+			
+				for(var i in start_markerList){
+					start_markerList[i].setMap(null);
 				}
 				document.getElementById('dp_name').value = null;
 				document.getElementById('dp_ny').value = null;
 				document.getElementById('dp_nx').value = null;
 				
+			
+			
+			
+				for(var i in pass_markerList){
+					pass_markerList[i].setMap(null);
+				
+				pass_markerList=[];
+				document.getElementById('t_name1').value = null;
+				document.getElementById('t_ny1').value = null;
+				document.getElementById('t_nx1').value = null;
+				document.getElementById('t_name2').value = null;
+				document.getElementById('t_ny2').value = null;
+				document.getElementById('t_nx2').value = null;
 			}
+			
+			
+				for(var i in end_markerList){
+					end_markerList[i].setMap(null);
+				}
+				end_markerList=[];
+				document.getElementById('dp_name').value = null;
+				document.getElementById('dp_ny').value = null;
+				document.getElementById('dp_nx').value = null;
+			
+			
 		}
 		
 	</script>

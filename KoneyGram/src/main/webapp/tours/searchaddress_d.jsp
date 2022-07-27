@@ -11,9 +11,6 @@
 
 <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 <script	src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
-<script src = "/resources/js/auto3.js"></script>
-<script src = "/resources/js/map.js"></script>
-<script type="text/javascript" src = "/resources/js/mapedit.js"></script>
 <script src="https://apis.openapi.sk.com/tmap/jsv2?version=1&appKey=l7xx0027c9071859472394ee1ff449ed1fdf"></script>
 <link rel="stylesheet" type="text/css" href="/resources/css/search.css">
 <meta charset="UTF-8">
@@ -34,6 +31,9 @@ p.on { display: inline-block; }
 </style>
 </head>
 <body>
+	<%
+		String tag = request.getParameter("tag");
+	%>
 <div class="mainDiv">
 	<input type="hidden" id="inpPage" value="1">
 	<input type="hidden" id="inpTotLimit" value="7">
@@ -285,17 +285,17 @@ function setPoiResultEl(arrResultArr) {
 	return strHtml;
 }
 
+
 function getaddressInfo(roadFullAddr, latitude, longitude){
 	/*값 확인을 위한 출력문*/
 /* 	alert(roadFullAddr);
 	alert(latitude);
 	alert(longitude); */
 	
-	window.opener.document.getElementById("dp_name").value = roadFullAddr;
-	window.opener.document.getElementById("dp_ny").value = latitude;
-	window.opener.document.getElementById("dp_nx").value = longitude;
-	
-	window.opener.popAddress('S',longitude,latitude);
+		window.opener.popAddress('S',longitude,latitude);
+		window.opener.document.getElementById("dp_name").value = roadFullAddr;
+		window.opener.document.getElementById("dp_ny").value = latitude;
+		window.opener.document.getElementById("dp_nx").value = longitude;
 	
 	window.close();
 }

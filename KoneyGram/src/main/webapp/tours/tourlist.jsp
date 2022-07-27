@@ -13,17 +13,13 @@
 <head>
 <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 <script	src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
-<script src = "resources/js/map.js"></script>
-<script src = "resources/js/mapedit.js"></script>
+<link rel = "stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/material-components-web/4.0.0/material-components-web.min.css">
+<link rel = "stylesheet" href="https://cdn.datatables.net/1.12.1/css/dataTables.bootstrap5.min.css">
  <script src="https://apis.openapi.sk.com/tmap/js?version=1&format=javascript&appKey=l7xx0027c9071859472394ee1ff449ed1fdf"></script>
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
-<link rel='stylesheet' href="https://cdn.datatables.net/responsive/1.0.4/css/dataTables.responsive.css">
-<link rel='stylesheet' href="https://https://cdn.datatables.net/1.12.1/css/dataTables.bootstrap5.min.css">
-<script src='https://cdn.datatables.net/1.10.5/js/jquery.dataTables.min.js'></script>
-<script src='https://cdn.datatables.net/plug-ins/f2c75b7247b/integration/bootstrap/3/dataTables.bootstrap.js'></script>
-<script src='https://cdn.datatables.net/responsive/1.0.4/js/dataTables.responsive.js'></script>
+<script src='https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js'></script>
+<script src='https://cdn.datatables.net/1.12.1/js/dataTables.bootstrap5.min.js'></script>
 <meta charset="UTF-8">
 <title>Insert title here</title>
 
@@ -177,7 +173,7 @@
 	<br>
 	<h5 style="text-align: center;">지역 관광지 리스트</h5>
  	<br>
- <table class="responsive-table">
+<table id="example" class="table table-striped" style="width:100%">
     <thead>
       <tr>
       	<th scope="col">관광지명</th>
@@ -186,7 +182,7 @@
         <th scope="col">관광지명주소(지번)</th>
         <th scope="col">관광지 소개</th>
         <th scope="col">전화 번호</th>
-        <th scope="col">관광루트로 지정</th>
+        <th scope="col"></th>
         <th scope="col" style="display:none">dd</th>
         <th scope="col" style="display:none">dd</th>
       </tr>
@@ -219,31 +215,44 @@
 
     <script>
     
+    $(document).ready(function () {
+        $('#example').DataTable();
+    });
+    
     var tag = <%=tag%>;
     
 	function selectTour(tourname,latitude,longitude){
 		
 		if(tag == '1'){
-		
+			
+			window.opener.TourMarker1(longitude,latitude);
+			
 			window.opener.document.getElementById('t_name1').value = tourname;
 			window.opener.document.getElementById('t_ny1').value = latitude;	//위도
 			window.opener.document.getElementById('t_nx1').value = longitude;	//경도
 			
-			window.opener.TourMarker1(longitude,latitude);
-			
 			window.close();
 			
 		}else if(tag == '2'){
+			
+			window.opener.TourMarker2(longitude,latitude);
+			
 			window.opener.document.getElementById('t_name2').value = tourname;
 			window.opener.document.getElementById('t_ny2').value = latitude;	//위도
 			window.opener.document.getElementById('t_nx2').value = longitude;	//경도
 			
+			window.close();
+		}else if(tag == '3'){
+			
 			window.opener.TourMarker2(longitude,latitude);
+			
+			window.opener.document.getElementById('t_name3').value = tourname;
+			window.opener.document.getElementById('t_ny3').value = latitude;	//위도
+			window.opener.document.getElementById('t_nx3').value = longitude;	//경도
 			
 			window.close();
 		}
 		
-		window.opener.TourMarker(longitude,latitude);
 		
 		window.close();
 	}
